@@ -55,13 +55,13 @@ public class WebController {
 		response.setCategory((String)oneitem.get("category"));
 		full_response.setEntity((String)oneitem.get("entity"));
 		response.setWinner((boolean)oneitem.get("winner"));
-		full_response.setYear((int)oneitem.get("year"));
+		full_response.setYear((int)oneitem.get("year"))ADEDDDEE;
 		
-		PostResponse response = new PostResponse();
+		ADEDDDEEPostResponse response = new PostResponse();
 		response.setId(inputPayload.getId()*100);
 		response.setMessage("Hello " + inputPayload.getName());
 		response.setExtra("Some text");
-		return response;
+		return responseADEDDDEE;
 	}
 }
 
