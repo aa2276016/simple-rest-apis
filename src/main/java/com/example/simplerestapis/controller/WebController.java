@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.simplerestapis.models.SampleResponse;
 import com.example.simplerestapis.models.OneItemResponse;
 import com.example.simplerestapis.models.PostRequest;
+import com.example.simplerestapis.models.PostSearchRequestByYearAndCategory;
 import com.example.simplerestapis.models.PostResponse;
 import com.example.simplerestapis.models.RequestOneItemFromDatabase;
+
 
 @RestController
 public class WebController {
 
 	@RequestMapping("/item")
-	public OneItemResponse Sample(@RequestParam(value = "idx",
-	defaultValue = "0") int idx) {
-		
+	public OneItemResponse Sample(@RequestParam(value = "idx", defaultValue = "0") int idx) {
 		RequestOneItemFromDatabase reuquestoneitem = new RequestOneItemFromDatabase();
 		JSONObject oneitem = reuquestoneitem.getDataByIdx(idx);
 		
@@ -39,8 +39,24 @@ public class WebController {
 		return response;
 	}
 	
-	@RequestMapping(value = "/test", method = RequestMethod.POST)
-	public PostResponse Test(@RequestBody PostRequest inputPayload) {
+//	@RequestMapping(value = "/search", method = RequestMethod.POST)
+//	public OneItemResponse Test(@RequestBody SearchPostRequest inputPayload) {
+//		PostResponse response = new PostResponse();
+//		response.setId(inputPayload.getId()*100);
+//		response.setMessage("Hello " + inputPayload.getName());
+//		response.setExtra("Some text");
+//		return response;
+//	}
+	
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	public OneCategoryResponse Test(@RequestBody PostSearchRequestByYearAndCategory inputPayload) {
+		
+		OneItemResponse response = new OneItemResponse();
+		response.setCategory((String)oneitem.get("category"));
+		response.setEntity((String)oneitem.get("entity"));
+		response.setWinner((boolean)oneitem.get("winner"));
+		response.setYear((int)oneitem.get("year"));
+		
 		PostResponse response = new PostResponse();
 		response.setId(inputPayload.getId()*100);
 		response.setMessage("Hello " + inputPayload.getName());
@@ -48,3 +64,18 @@ public class WebController {
 		return response;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
