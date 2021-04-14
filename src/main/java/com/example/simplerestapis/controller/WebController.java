@@ -51,7 +51,7 @@ public class WebController {
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public OneCategoryResponse Test(@RequestBody PostSearchRequestByYearAndCategory inputPayload) {
 		
-		OneItemResponse response = new OneItemResponse();
+		OneCategoryResponse response = new OneCategoryResponse();
 		response.setCategory((String)oneitem.get("category"));
 		response.setEntity((String)oneitem.get("entity"));
 		response.setWinner((boolean)oneitem.get("winner"));
